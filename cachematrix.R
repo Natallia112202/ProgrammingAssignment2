@@ -12,7 +12,7 @@
 # <<- (not <-) operator used here to set the value of x and INV 
 # because x and INV we want to modify are defined/created  in the environment of 
 # makeCacheMatrix, not in the environment local to function set(). 
-# We reset INV to NULL here since we are modifying the original matrix and the cached value of INV is no longer valid.
+# Function resets INV to NULL here since we are modifying the original matrix and the cached value of INV is no longer valid.
 
 makeCacheMatrix <- function(x = matrix()) {
 
@@ -30,11 +30,11 @@ set <- function(y) {
 # list() function is used here to return value of the makeCacheMatrix as 
 # a list of functions that will be visible to a user.
 # Each function on the list is accessed with the $ operator:
-# e.g. we have matrix x<-(1:4,2,2) and
-# we  assign to M<-makeCacheMatrix(x), then we can retrieve 
+# e.g. I have matrix x<-c(1:4,2,2) and
+# I  assign to M<-makeCacheMatrix(x), then I can retrieve 
 # original matrix by calling M$get()
-# we can retrieve the inverted  matrix by
-# calling  M$getinverse()
+# I can also retrieve the inverted  matrix by
+# calling  M$getinverse(). See EXAMPLE 1 below.
 
 
 ## FUNCTION 2 cacheSolve()##
@@ -59,6 +59,7 @@ cacheSolve <- function(x, ...) {
  
 
 ##EXAMPLE 1 of how the functions work:##
+# >x<-c(1:4,2,2)
 # > M<-makeCacheMatrix(x)
 # > M$get()
 #     [,1] [,2]
